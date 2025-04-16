@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>Ma Bibliothèque Personnelle</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ma Bibliothèque Personnelle</h1>
+            <button id="addBookBtn" class="add-btn">Ajouter un livre</button>
+        </header>
+        
+        <div class="alert alert-success" id="alertMessage"></div>
+        
+        <div class="filters">
+            <input type="text" id="searchInput" placeholder="Rechercher un titre ou auteur...">
+            <label for="genreFilter">Filtrer par genre :</label>
+            <select id="genreFilter">
+                <option value="">Tous les genres</option>
+                <option value="roman">Roman</option>
+                <option value="scienceFiction">Science Fiction</option>
+                <option value="fantastique">Fantastique</option>
+                <option value="biographie">Biographie</option>
+                <option value="histoire">Histoire</option>
+                <option value="policier">Policier</option>
+            </select>
+            <label for="statusFilter">Filtrer par statut :</label>
+            <select id="statusFilter">
+                <option value="">Tous les statuts</option>
+                <option value="nonLu">Non lu</option>
+                <option value="enCours">En cours</option>
+                <option value="lu">Lu</option>
+            </select>
+        </div>
+        
+        <div class="book-grid" id="bookGrid">
+            <!-- Les livres seront affichés ici dynamiquement -->
+        </div>
+    </div>
+    
+    <!-- Modal formulaire pour ajouter/éditer un livre -->
+    <div class="modal" id="bookFormModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Ajouter un livre</h2>
+                <button class="close-btn" id="closeFormModal">&times;</button>
+            </div>
+            <form id="bookForm">
+                <input type="hidden" id="bookId">
+                
+                <div class="form-group">
+                    <label for="title">Titre</label>
+                    <input type="text" class="form-control" id="title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="author">Auteur</label>
+                    <input type="text" class="form-control" id="author" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="year">Année de publication</label>
+                    <input type="number" class="form-control" id="year" min="1000" max="2030" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <select class="form-control" id="genre" required>
+                        <option value="roman">Roman</option>
+                        <option value="scienceFiction">Science Fiction</option>
+                        <option value="fantastique">Fantastique</option>
+                        <option value="biographie">Biographie</option>
+                        <option value="histoire">Histoire</option>
+                        <option value="policier">Policier</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rating">Note (sur 5)</label>
+                    <input type="number" class="form-control" id="rating" min="0" max="5" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="status">Statut</label>
+                    <select class="form-control" id="status" required>
+                        <option value="nonLu">Non lu</option>
+                        <option value="enCours">En cours</option>
+                        <option value="lu">Lu</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description (optionnelle)</label>
+                    <textarea class="form-control" id="description" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="coverUrl">URL de la couverture (optionnelle)</label>
+                    <input type="url" class="form-control" id="coverUrl">
+                </div>
+                
+                <button type="submit" class="submit-btn">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal détail pour afficher un livre -->
+    <div class="modal" id="bookDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="detailTitle"></h2>
+                <button class="close-btn" id="closeDetailModal">&times;</button>
+            </div>
+            <div class="detail-cover" id="detailCover"></div>
+            <p><strong>Auteur:</strong> <span id="detailAuthor"></span></p>
+            <p><strong>Année:</strong> <span id="detailYear"></span></p>
+            <p><strong>Genre:</strong> <span id="detailGenre"></span></p>
+            <p><strong>Note:</strong> <span id="detailRating"></span>/5</p>
+            <p><strong>Statut:</strong> <span id="detailStatus"></span></p>
+            <p><strong>Description:</strong></p>
+            <p id="detailDescription"></p>
+        </div>
+    </div>
+</body>
+<script src="/assets/app.js"></script>
+</html>
