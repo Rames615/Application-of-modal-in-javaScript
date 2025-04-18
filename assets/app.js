@@ -31,7 +31,7 @@ let livres = [
     auteur: "Frank Herbert",
     annee: 1965,
     genre: "scienceFiction",
-    note: 5,
+    note: 2,
     statut: "enCours",
     description:
       "L'histoire de Paul Atréides sur la planète désertique Arrakis, source de l'épice la plus précieuse de l'univers.",
@@ -40,7 +40,7 @@ let livres = [
   },
 ];
 
-// todo : Sélection des éléments du DOM
+// todo : Sélection des éléments du DOM **************
 
 const grilleLivres = document.getElementById("bookGrid");
 const formulaireLivre = document.getElementById("bookForm");
@@ -55,7 +55,7 @@ const filtreGenre = document.getElementById("genreFilter");
 const filtreStatut = document.getElementById("statusFilter");
 const messageAlerte = document.getElementById("alertMessage");
 
-// === 3. Affichage des livres ===
+// todo 3 : Affichage des livres **********************
 function afficherLivres(liste) {
     grilleLivres.innerHTML = "";
 
@@ -80,7 +80,7 @@ function afficherLivres(liste) {
            <div class = "book-info">
             <h3>${livre.titre}</h3>
             <p>${livre.auteur}</p>
-            <p>${"⭐".repeat(livre.note)}${"⭐".repeat(5 - livre.note)}</p>
+            <p class = "book-rating">${"\u2605".repeat(livre.note)}  ${"\u2729".repeat(5 - livre.note)}</p>
             <p class ="book-status ${statutClass}"> ${livre.statut}</p>
             <div class="actions">
            </div>
@@ -99,7 +99,7 @@ function afficherLivres(liste) {
     });
 }
 afficherLivres(livres);
-
+// todo 4 : Ajout d'un livre **********************
 
 let idActuel = livres.length ? Math.max(...livres.map(l => l.id)) : 0;
 
@@ -107,7 +107,6 @@ let idActuel = livres.length ? Math.max(...livres.map(l => l.id)) : 0;
 boutonAjouterLivre.addEventListener("click", () => {
     formulaireLivre.reset();
     document.getElementById("bookId").value = "";
-    titreModal.textContent = "Ajouter un livre";
     modalFormulaireLivre.style.display = "block";
 });
 
@@ -196,6 +195,27 @@ window.addEventListener("click", (e) => {
         modalDetailLivre.style.display = "none";
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
